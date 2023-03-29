@@ -29,6 +29,18 @@ st.markdown("""
 </style>
 """,unsafe_allow_html=True)
 
+# Agregamos CSS personalizado para cambiar el color del recuadro a naranja
+st.markdown(
+    """
+    <style>
+    div[data-baseweb="select"]>div:first-child {
+        border-color: orange !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title("Aplicaciones de machine learning sobre heterogeneidad intratumoral en glioblastoma utilizando datos de secuenciación de ARN")
 
 opt = st.sidebar.radio('Seleccionar Análisis:', ['General', 'Astrocitos'])
@@ -89,18 +101,6 @@ if opt == 'General':
 
         # Creamos un desplegable para que el usuario pueda seleccionar el conjunto de datos a graficar
         selected_dataset = st.selectbox('Selecciona el lugar de las células para visualizar su distribución:', list(datasets.keys()))
-
-        # Agregamos CSS personalizado para cambiar el color del recuadro a naranja
-        st.markdown(
-            """
-            <style>
-            div[data-baseweb="select"]>div:first-child {
-                border-color: orange !important;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
 
         # Obtenemos los datos del conjunto seleccionado
         data = datasets[selected_dataset]
@@ -218,6 +218,45 @@ else:
         elif selected_dataset == '4: TC vs TP vs NP':
             st.write("Se realiza la clasificación independiente del núcleo del tumor (TC), la periferia del tumor (TP) y la periferia normal (NP)")
 
+    ###############################################
+
+    st.subheader("Análisis de t-SNE")
+    st.write('Los gráficos de t-SNE en conjuntos de 23,368, 65, 12 y 8 genes confirman la heterogeneidad del GBM con respecto a los genes seleccionados.')
+    # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
+    tSNE_images = {'23.368 Genes':'./images/tSNE23368gen.png', '65 Genes': './images/tSNE65gen.png', '12 Genes': './images/tSNE12gen.png', '8 Genes': './images/tSNE8gen.png'}
+    images = [Image.open(tSNE_images[dataset]) for dataset in tSNE_images.keys()]
+    labels = [dataset for dataset in tSNE_images.keys()]
+    # Crear el panel de 2x2 imágenes
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(images[0], use_column_width=True)
+        st.write(labels[0])
+        st.image(images[2], use_column_width=True)
+        st.write(labels[2])        
+    with col2:
+        st.image(images[1], use_column_width=True)
+        st.write(labels[1])
+        st.image(images[3], use_column_width=True)
+        st.write(labels[3])
+    
+    ###############################################
+
+    st.subheader("Análisis de PCA en 3D")
+    # Contenido de la página principal
+    st.write('Ver el análisis de PCA para una cantidad determinada de genes relevantes en el Glioblastoma.')
+
+    # Creamos la estructura de los datos
+
+    # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
+    PCA_images = {'12 Genes':'./images/pca12gen.png', '8 Genes': './images/pca8gen.png'}
+
+    # Creamos un desplegable para que el usuario pueda seleccionar el conjunto de datos a graficar
+    selected_dataset = st.selectbox('Selecciona la cantidad de genes a los cuales desea aplicar una visualizacion en 3D usando PCA:', list(PCA_images.keys()))
+
+    # Cargar la imagen correspondiente a la opción seleccionada
+    image = Image.open(PCA_images[selected_dataset])
+    st.image(image, caption='Análisis de Componentes Principales en 3D')
+    
     st.subheader("Biomarcador")
     gen_type = ['ATP1A2', 'NMB', 'SPARCL1', 'USMG5', 'PTN', 'PCSK1N', 'ANAPC11', 'TMSB10', 'TMEM144', 'PSMB4', 'NRBP2', 'FTL',
                 'MIR3682', 'S1PR1', 'PRODH', 'SRP9', 'GAP43', 'RPL30', 'LAMA5', 'ECHDC2', 'EGFR', 'CALM1', 'APOD', 'SPOCK1', 'ANXA1', 'PTGDS', 'EIF1', 'VIM', 'MGLL', 'ITM2C', 'PLLP',
@@ -225,7 +264,7 @@ else:
                 'GLDN', 'EMP3', 'COMMD6', 'ANXA2', 'RPL38', 'CEBPD', 'APBB1IP', 'HLADRB6', 'TUBGCP2', 'LCP2', 'LOC100505854', 'IFI44', 'GNG11']
     st.write("Un biomarcador es una medida objetiva de una característica biológica que puede ser utilizada para indicar la presencia, gravedad o progresión de una enfermedad, así como para evaluar la eficacia de un tratamiento.")
     selected_dataset = st.selectbox('Seleccionar un gen:', gen_type)
-
+    
     if selected_dataset == 'ATP1A2':
         st.write("ATP1A2 codifica una subunidad de la bomba de sodio-potasio, que es responsable del mantenimiento del equilibrio de iones en las células. Mutaciones en este gen se han relacionado con migrañas familiares hemipléjicas. No se ha demostrado ninguna relación con glioblastoma u otros cánceres.")
     elif selected_dataset == 'NMB':
@@ -356,47 +395,10 @@ else:
         st.write("IFI44 es un gen que codifica para la proteína interferón-inducible 44, la cual tiene un papel en la respuesta antiviral y la regulación de la señalización intracelular. Si bien no se ha identificado una relación directa entre IFI44 y glioblastomas, algunos estudios sugieren que la expresión de genes interferón-inducibles puede estar implicada en la regulación de la respuesta inmunitaria y la progresión tumoral en algunos tipos de cáncer.")
     elif selected_dataset == 'GNG11':
         st.write("GNG11 es un gen que codifica para la proteína subunitaria gamma 11 de la proteína G, la cual tiene un papel en la señalización intracelular y la regulación de la actividad de diversas proteínas. Si bien no se ha identificado una relación directa entre GNG11 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la angiogénesis y la progresión tumoral en otros tipos de cáncer.")
-
-    ###############################################
-
-    st.subheader("Análisis de t-SNE")
-    st.write('Los gráficos de t-SNE en conjuntos de 23,368, 65, 12 y 8 genes confirman la heterogeneidad del GBM con respecto a los genes seleccionados.')
-    # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
-    tSNE_images = {'23.368 Genes':'./images/tSNE23368gen.png', '65 Genes': './images/tSNE65gen.png', '12 Genes': './images/tSNE12gen.png', '8 Genes': './images/tSNE8gen.png'}
-    images = [Image.open(tSNE_images[dataset]) for dataset in tSNE_images.keys()]
-    labels = [dataset for dataset in tSNE_images.keys()]
-    # Crear el panel de 2x2 imágenes
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(images[0], use_column_width=True)
-        st.write(labels[0])
-        st.image(images[2], use_column_width=True)
-        st.write(labels[2])        
-    with col2:
-        st.image(images[1], use_column_width=True)
-        st.write(labels[1])
-        st.image(images[3], use_column_width=True)
-        st.write(labels[3])
-    
-    ###############################################
-
-    st.subheader("Análisis de PCA en 3D")
-    # Contenido de la página principal
-    st.write('Ver el análisis de PCA para una cantidad determinada de genes relevantes en el Glioblastoma.')
-
-    # Creamos la estructura de los datos
-
-    # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
-    PCA_images = {'12 Genes':'./images/pca12gen.png', '8 Genes': './images/pca8gen.png'}
-
-    # Creamos un desplegable para que el usuario pueda seleccionar el conjunto de datos a graficar
-    selected_dataset = st.selectbox('Selecciona la cantidad de genes a los cuales desea aplicar una visualizacion en 3D usando PCA:', list(PCA_images.keys()))
-
-    # Cargar la imagen correspondiente a la opción seleccionada
-    image = Image.open(PCA_images[selected_dataset])
-    st.image(image, caption='Análisis de Componentes Principales en 3D')
+    else:
+        st.write("No se encontró información para el gen ingresado.")
     
     # Final
-    if selected_dataset == "8 Genes":
-        st.balloons()
-    
+    #if selected_dataset == "8 Genes":
+    #    st.balloons()
+        
