@@ -129,7 +129,7 @@ if opt == 'General':
         ###########################################################################
 
         # Mostramos grafica de Torta de como se distribuyen los datos por tipo de celula
-        
+
         st.subheader("Cantidades y porcentajes para el tipo de celulas relacionadas")
         st.write('Este diagrama muestra la distribucion de datos por tipo de celula.')
 
@@ -144,7 +144,7 @@ if opt == 'General':
         
         # Obtener las claves de las listas como opciones para el selector
         opciones = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
-        opcion_seleccionada = st.selectbox('Selecciona una lista:', opciones)
+        opcion_seleccionada = st.selectbox('Selecciona un tipo de célula:', opciones)
         
         # Obtener los datos de la lista seleccionada
         datos = []
@@ -155,7 +155,7 @@ if opt == 'General':
         elif opcion_seleccionada == 'Microglía':
             datos = cant_microglia
         elif opcion_seleccionada == 'Neuronas':
-            datos = cant_neurons
+            datos = cant_neurons            
         elif opcion_seleccionada == 'Oligodendrocitos':
             datos = cant_oligodendrocytes
         else:
@@ -184,7 +184,7 @@ else:
     st.subheader("Astrocitos")
     st.image("./images/cerebro.jpg",caption="El cerebro, nuestro procesador en la vida. Imagen de kjpargeter en Freepik")
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         st.subheader("Tipo de Algoritmo")
         st.write("Definicion del algoritmo implementado para seleccionar biomarcadores mas representativos.")
@@ -204,147 +204,6 @@ else:
             st.write("ET (Extra Trees) es un algoritmo de aprendizaje supervisado utilizado para problemas de clasificación y regresión. Es similar a Random Forest (RF) en que construye múltiples árboles de decisión, pero se diferencia en cómo se construyen y combinan los árboles. En ET, cada árbol se construye utilizando un subconjunto aleatorio de las características del conjunto de datos. A diferencia de RF, donde se realiza una selección de características aleatorias y se evalúa la mejor división, en ET se selecciona una división aleatoria en cada nodo. Esto significa que los árboles individuales en ET son más aleatorios y, por lo tanto, más diversos.")
             
     with col2:
-
-        st.subheader("Biomarcador")
-        gen_type = ['ATP1A2', 'NMB', 'SPARCL1', 'USMG5', 'PTN', 'PCSK1N', 'ANAPC11', 'TMSB10', 'TMEM144', 'PSMB4', 'NRBP2', 'FTL',
-                    'MIR3682', 'S1PR1', 'PRODH', 'SRP9', 'GAP43', 'RPL30', 'LAMA5', 'ECHDC2', 'EGFR', 'CALM1', 'APOD', 'SPOCK1', 'ANXA1', 'PTGDS', 'EIF1', 'VIM', 'MGLL', 'ITM2C', 'PLLP',
-                    'ITGB8', 'HES6', 'RPS27L', 'GFAP', 'TRIM2', 'APOE', 'ANXA5', 'NAV1', 'TMSB4X', 'HSPB1', 'SEC61G', 'IGSF6', 'IGFBP2', 'RPLP1', 'CSF1R', 'NACA', 'HTRA1', 'CSF3R', 'CREG1', 'FAM107B', 'SLAMF9',
-                    'GLDN', 'EMP3', 'COMMD6', 'ANXA2', 'RPL38', 'CEBPD', 'APBB1IP', 'HLADRB6', 'TUBGCP2', 'LCP2', 'LOC100505854', 'IFI44', 'GNG11']
-        st.write("Un biomarcador es una medida objetiva de una característica biológica que puede ser utilizada para indicar la presencia, gravedad o progresión de una enfermedad, así como para evaluar la eficacia de un tratamiento.")
-        selected_dataset = st.selectbox('Seleccionar un gen:', gen_type)
-        
-        if selected_dataset == 'ATP1A2':
-            st.write("Es el nombre de un gen humano que codifica una proteína llamada subunidad alfa-2 de la ATPasa Na+/K+. Esta proteína se encuentra en la membrana celular y juega un papel importante en la regulación del transporte de iones sodio y potasio a través de la membrana. En algunos tipos de cáncer, como el cáncer de mama y el glioma, se ha encontrado que la expresión del gen ATP1A2 es reducida, lo que sugiere que esta proteína podría tener un papel en la progresión del cáncer,")
-        elif selected_dataset == 'NMB':
-            st.write("NMB son las siglas de neuromuscular blocking agent, que en español significa agente bloqueador neuromuscular. Estos agentes son sustancias químicas que se utilizan en anestesia para bloquear temporalmente la función de los músculos esqueléticos. En algunos tipos de cáncer, como el cáncer de pulmón, el cáncer de mama y el cáncer de próstata, se ha encontrado que la sobreexpresión del gen NMB se correlaciona con una mayor agresividad y progresión del cáncer. Por lo tanto, NMB se ha propuesto como un posible objetivo terapéutico para el tratamiento del cáncer.")
-        elif selected_dataset == 'SPARCL1':
-            st.write("Gen humano que codifica una proteína conocida como SPARC-like protein 1. Esta proteína se encuentra en la matriz extracelular de los tejidos y desempeña un papel importante en la regulación del crecimiento y la migración celular, así como en la adhesión celular y la angiogénesis. Se ha demostrado que SPARCL1 se expresa en una variedad de tejidos, incluyendo pulmón, hígado, páncreas, riñón y cerebro, y se ha implicado en la patología de varias enfermedades, incluyendo el cáncer.")
-        elif selected_dataset == 'USMG5':
-            st.write("El gen codifica una proteína con un papel en el mantenimiento y la regulación de la población de ATP sintasa en la mitocondria. Se ha encontrado que la mutación del gen USMG5 se asocia con un mayor riesgo de desarrollar varios tipos de cáncer, incluyendo el cáncer de mama y el cáncer colorrectal.")
-        elif selected_dataset == 'PTN':
-            st.write("Es un gen humano que codifica una proteína llamada pleiotrophin. La proteína pleiotrofina es una proteína secretada que se une a los receptores de la superficie celular y está involucrada en diversos procesos biológicos, como el desarrollo del sistema nervioso, la angiogénesis y la reparación de tejidos. Se ha demostrado que la sobreexpresión de PTN está asociada con el cáncer y la inflamación, y puede desempeñar un papel en la progresión y metástasis de algunos tipos de cáncer.")
-        elif selected_dataset == 'PCSK1N':
-            st.write("Codifica una proteína conocida como proconvertasa subtilisina/kexina tipo 1 inhibitor. Esta proteína es un inhibidor natural de las proconvertasas subtilisinas/kexinas tipo 1 (PCSK1), que son enzimas proteolíticas involucradas en la activación de varias proteínas secretadas, incluyendo hormonas y factores de crecimiento. Se ha demostrado que la mutación del gen PCSK1N se relaciona con un mayor riesgo de desarrollar cáncer colorrectal y que la expresión reducida de PCSK1N se correlaciona con una mayor agresividad y progresión del cáncer de páncreas.")
-        elif selected_dataset == 'ANAPC11':
-            st.write("Gen humano que codifica una proteína que forma parte de un complejo proteico conocido como anafase-promoting complex/cyclosome (APC/C). El APC/C es una ubiquitina ligasa que regula la progresión del ciclo celular al degradar proteínas clave involucradas en la mitosis y la meiosis. se ha demostrado que la expresión reducida de ANAPC11 se correlaciona con una mayor agresividad y progresión del cáncer de mama y del cáncer de ovario, lo que sugiere que ANAPC11 podría ser un posible biomarcador pronóstico en estos tipos de cáncer.")
-        elif selected_dataset == 'TMSB10':
-            st.write("Gen humano que codifica una proteína llamada tensina beta-10. La proteína TMSB10 pertenece a una familia de proteínas llamadas tensinas, que se unen a la actina y juegan un papel importante en la regulación del citoesqueleto y la migración celular. Se ha demostrado que la mutación del gen TMSB10 se relaciona con un mayor riesgo de desarrollar cáncer colorrectal y que la expresión reducida de TMSB10 se correlaciona con una mayor agresividad y progresión del cáncer de mama y del cáncer de pulmón. Además, se ha encontrado que la sobreexpresión de TMSB10 se asocia con una mayor supervivencia en pacientes con cáncer de próstata, lo que sugiere que TMSB10 podría ser un posible biomarcador pronóstico en este tipo de cáncer.")
-        elif selected_dataset == 'TMEM144':
-            st.write("Es el gen humano que codifica una proteína de membrana transmembrana llamada proteína 144 de la membrana transmembrana. Aunque se sabe poco sobre la función exacta de esta proteína, se ha encontrado que se expresa en una variedad de tejidos, incluyendo el cerebro, el hígado y los riñones. se relaciona con un mayor riesgo de desarrollar cáncer colorrectal y que la expresión reducida de TMEM144 se correlaciona con una mayor agresividad y progresión del cáncer de mama y del cáncer de pulmón. ")
-        elif selected_dataset == 'PSMB4':
-            st.write("Gen humano que codifica una subunidad proteica del proteasoma, una compleja maquinaria proteolítica encargada de degradar proteínas celulares no deseadas o dañadas. La subunidad proteica PSMB4 se encuentra en el núcleo y se une al complejo del proteasoma, ayudando en la degradación de proteínas específicas en el núcleo celular. Se ha demostrado que la mutación del gen PSMB4 se relaciona con un mayor riesgo de desarrollar diversos tipos de cáncer, incluyendo el cáncer de ovario, el cáncer de pulmón y el cáncer de próstata. Además, se ha encontrado que la expresión reducida de PSMB4 se correlaciona con una mayor agresividad y progresión del cáncer de mama y del cáncer de pulmón.")
-        elif selected_dataset == 'NRBP2':
-            st.write("Codifica una proteína de unión a receptores nucleares conocida como proteína de unión al receptor nuclear relacionada con la inmunidad (NRBP, por sus siglas en inglés). La proteína NRBP2 es una de las dos isoformas producidas por el gen NRBP y se ha demostrado que interactúa con varios receptores nucleares, incluyendo los receptores de andrógenos y estrógenos, y juega un papel importante en la regulación de la transcripción génica. Se ha demostrado que la mutación del gen NRBP2 se relaciona con un mayor riesgo de desarrollar cáncer de pulmón y que la expresión reducida de NRBP2 se correlaciona con una mayor agresividad y progresión del cáncer de mama.")
-        elif selected_dataset == 'FTL':
-            st.write("Gen humano que codifica la proteína de la ferritina ligera. La ferritina es una proteína esencial para el metabolismo del hierro en las células, que almacena el hierro en forma no tóxica y lo libera cuando es necesario. La proteína FTL forma parte de la ferritina junto con la subunidad pesada codificada por el gen FTH1.  Se ha demostrado que la mutación del gen FTL se relaciona con un mayor riesgo de desarrollar cáncer de hígado y que la expresión reducida de FTL se correlaciona con una mayor agresividad y progresión del cáncer de mama y del cáncer de próstata.")
-        elif selected_dataset == 'MIR3682':
-            st.write("MicroARN humano, es decir, una pequeña molécula de ARN que regula la expresión génica al unirse a ARN mensajero y promover su degradación o inhibir su traducción. Se ha encontrado que el microARN MIR3682 se expresa en una variedad de tejidos humanos, incluyendo el cerebro, los pulmones y el hígado. Se ha demostrado que MIR3682 actúa como un regulador negativo de varios genes implicados en la proliferación, la invasión y la metástasis celular en el cáncer.")
-        elif selected_dataset == 'S1PR1':
-            st.write("Gen humano que codifica el receptor 1 de esfingosina-1-fosfato (S1P1), que es un receptor acoplado a proteínas G presente en la superficie de las células. El receptor S1P1 se une a la esfingosina-1-fosfato, un lípido bioactivo, y se ha demostrado que tiene un papel importante en la regulación de la respuesta inmune y la inflamación, así como en la formación de vasos sanguíneos durante el desarrollo embrionario y en la angiogénesis en enfermedades como el cáncer.")
-        elif selected_dataset == 'PRODH':
-            st.write("Gen humano que codifica la enzima prolina oxidasa, que es responsable de la conversión de prolina a ácido pirroline-5-carboxílico (P5C) en la vía metabólica de la prolina. La prolina es un aminoácido importante que se encuentra en proteínas y también tiene funciones biológicas independientes, como la protección contra el estrés oxidativo. Se ha demostrado que la mutación del gen PRODH se relaciona con un mayor riesgo de desarrollar varios tipos de cáncer, incluyendo el cáncer de mama y el cáncer de pulmón. Además, se ha encontrado que la expresión reducida de PRODH se correlaciona con una mayor agresividad y progresión del cáncer de colon y del cáncer de pulmón.")
-        elif selected_dataset == 'SRP9':
-            st.write("Gen humano que codifica la proteína 9 de la partícula de reconocimiento de señal (SRP), que es una proteína involucrada en el proceso de translocación de proteínas hacia el retículo endoplásmico durante la síntesis de proteínas. Mutaciones en el gen SRP9 se han relacionado con algunos trastornos genéticos, como el síndrome de Marfan y la ataxia cerebelosa autosómica recesiva tipo 1. Se ha encontrado que la sobreexpresión de SRP9 se asocia con una mayor supervivencia en pacientes con cáncer de pulmón y podría ser un posible biomarcador pronóstico en este tipo de cáncer. Sin embargo, aún se necesita más investigación para entender mejor el papel exacto de SRP9 en el cáncer y su potencial como diana terapéutica.")
-        elif selected_dataset == 'GAP43':
-            st.write("Codifica la proteína de crecimiento asociada a los axones 43 (GAP-43), que es una proteína importante en el crecimiento y la regeneración de los axones en el sistema nervioso. se ha demostrado que la expresión de GAP-43 aumenta en respuesta a diversas lesiones del sistema nervioso, lo que sugiere que puede ser un objetivo terapéutico para promover la regeneración y la recuperación neuronal en casos de lesiones o enfermedades neurológicas. Si bien GAP43 no se considera un gen directamente relacionado con el cáncer, se ha demostrado que su expresión se encuentra alterada en varios tipos de tumores, incluyendo el cáncer de próstata y el cáncer de mama. ")
-        elif selected_dataset == 'RPL30':
-            st.write("Gen humano que codifica la proteína ribosomal L30, que es una proteína componente de la subunidad 60S del ribosoma. Mutaciones en el gen RPL30 se han relacionado con algunos trastornos genéticos, como la anemia de Fanconi, aunque se necesita más investigación para comprender mejor la función biológica de RPL30 y cómo se relaciona con la fisiología y la patología humanas. Si bien la mutación en RPL30 no se ha relacionado directamente con el cáncer, se ha encontrado que la expresión de RPL30 está alterada en varios tipos de tumores, incluyendo el cáncer de mama, el cáncer de pulmón y el cáncer de próstata.")
-        elif selected_dataset == 'LAMA5':
-            st.write("Es un gen humano que codifica la proteína laminina alfa-5, que es una proteína importante en la formación y mantenimiento de la matriz extracelular en diversos tejidos, incluyendo la piel, los músculos y el sistema nervioso.  Mutaciones en el gen LAMA5 se han relacionado con algunos trastornos genéticos, como el síndrome de enfermedad ocular-eritroniquia-arteria pulmonar, aunque se necesita más investigación para comprender mejor la función biológica de LAMA5 y cómo se relaciona con la fisiología y la patología humanas. Se ha demostrado que la sobreexpresión de LAMA5 se asocia con una mayor invasión y metástasis en varios tipos de cáncer, incluyendo el cáncer de mama, el cáncer de pulmón y el cáncer colorrectal.")
-        elif selected_dataset == 'ECHDC2':
-            st.write("Codifica la proteína enoyl-CoA hydratase domain-containing protein 2, que se encuentra principalmente en la mitocondria y está involucrada en el metabolismo de ácidos grasos de cadena larga. Mutaciones en el gen ECHDC2 se han relacionado con algunos trastornos metabólicos, como la deficiencia de acil-CoA deshidrogenasa de cadena muy larga, aunque se necesita más investigación para comprender mejor la función biológica de ECHDC2 y cómo se relaciona con la fisiología y la patología humanas. Si bien la relación entre ECHDC2 y el cáncer aún no está completamente comprendida, se ha encontrado que la expresión de ECHDC2 está alterada en varios tipos de tumores, incluyendo el cáncer de pulmón y el cáncer colorrectal.")
-        elif selected_dataset == 'EGFR':
-            st.write("Es una proteína transmembrana que se encuentra en la superficie de muchas células en el cuerpo humano, y es un receptor que se une a las moléculas de señalización llamadas factores de crecimiento epidérmico (EGF) y proteínas relacionadas.Se ha demostrado que EGFR está involucrado en la patogénesis de algunos tipos de cáncer, incluyendo el cáncer de pulmón, el cáncer colorrectal y el cáncer de mama, y se han desarrollado inhibidores de EGFR como tratamientos para estos tipos de cáncer.")
-        elif selected_dataset == 'CALM1':
-            st.write("Es un gen humano que codifica la proteína calmodulina-1, que es una proteína importante en la señalización celular y la regulación del calcio en las células. La proteína CALM1 también ha sido implicada en la patogénesis de algunos trastornos neurológicos, incluyendo la enfermedad de Alzheimer y la esquizofrenia. La calmodulina ha sido implicada en la tumorigénesis y en la progresión del cáncer en varios tipos de tumores, incluyendo el cáncer de mama, el cáncer de próstata y el cáncer colorrectal.")
-        elif selected_dataset == 'APOD':
-            st.write("APOD es el acrónimo del gen humano apolipoproteína D, que codifica una proteína que se encuentra en el plasma sanguíneo y en muchos tejidos del cuerpo humano, incluyendo el cerebro, el hígado y el riñón. APOD también ha sido implicada en la protección neuronal contra el daño oxidativo y en la regulación de la inflamación y la respuesta inmune. APOD se ha relacionado con algunos trastornos neurológicos, como la enfermedad de Alzheimer y la esclerosis múltiple, y se ha sugerido que podría tener un papel en la patogénesis de algunos tipos de cáncer.")
-        elif selected_dataset == 'SPOCK1':
-            st.write("SPOCK1 es el acrónimo del gen humano SPARC/osteonectina, proteína codificada por la cDNA, y kringle conteniendo 1, que codifica la proteína SPOCK1. La proteína SPOCK1 ha sido implicada en la progresión tumoral y la invasión metastásica en algunos tipos de cáncer, incluyendo el cáncer de mama, el cáncer de pulmón y el cáncer de ovario.")
-        elif selected_dataset == 'ANXA1':
-            st.write("ANXA1 es el acrónimo del gen humano anexina A1, que codifica una proteína llamada anexina A1. ANXA1 se ha relacionado con una variedad de trastornos, incluyendo la inflamación crónica, la artritis reumatoide, la enfermedad inflamatoria intestinal y algunos tipos de cáncer.")
-        elif selected_dataset == 'PTGDS':
-            st.write("PTGDS es el acrónimo del gen humano prostaglandina D2 sintasa, que codifica una enzima llamada prostaglandina D2 sintasa. Se ha relacionado la enzima PTGDS con una variedad de trastornos, incluyendo la inflamación, la aterosclerosis, la enfermedad de Alzheimer y algunos tipos de cáncer.")
-        elif selected_dataset == 'EIF1':
-            st.write("EIF1 es el acrónimo del gen humano factor de iniciación 1 de la traducción, que codifica una proteína llamada factor de iniciación eucariota 1 (eIF1). Se ha demostrado que la alteración de la expresión o la función de eIF1 puede tener efectos significativos sobre la síntesis de proteínas y el desarrollo celular, y se ha relacionado con una variedad de trastornos, incluyendo el cáncer, las enfermedades neurodegenerativas y las enfermedades cardiovasculares.")
-        elif selected_dataset == 'VIM':
-            st.write("VIM es el acrónimo del gen humano vimentina, que codifica una proteína estructural llamada vimentina. Se ha relacionado la vimentina con una variedad de trastornos, incluyendo el cáncer, las enfermedades cardiovasculares y las enfermedades neurodegenerativas.")
-        elif selected_dataset == 'MGLL':
-            st.write("MGLL es el acrónimo del gen humano monoacilglicerol lipasa, que codifica una enzima llamada monoacilglicerol lipasa. La alteración de la expresión o la función de MGLL se ha relacionado con una variedad de trastornos, incluyendo la obesidad, la diabetes y las enfermedades cardiovasculares, al parecer no tiene relación con el cáncer.")
-        elif selected_dataset == 'ITM2C':
-            st.write("ITM2C es el acrónimo del gen humano proteína 2 transmembrana del tipo 2C, que codifica una proteína transmembrana de tipo II llamada E25B. La proteína ITM2C se expresa en muchos tejidos diferentes del cuerpo, incluyendo el cerebro, el tejido adiposo y el tejido óseo, y se ha relacionado con una variedad de trastornos, incluyendo el cáncer, las enfermedades neurodegenerativas y la osteoporosis.")
-        elif selected_dataset == 'PLLP':
-            st.write("PLLP es el acrónimo del gen humano proteína relacionada con la proteolipina, que codifica una proteína llamada proteína relacionada con la proteolipina (PLP). La proteína PLP se expresa principalmente en el cerebro y la médula espinal, y las mutaciones en el gen que codifica PLP se han relacionado con una variedad de trastornos neurológicos, incluyendo la leucodistrofia de Pelizaeus-Merzbacher, una enfermedad genética rara que afecta a la mielina del sistema nervioso central.")
-        elif selected_dataset == 'ITGB8':
-            st.write("ITGB8 es el acrónimo del gen humano integrina beta 8, que codifica una proteína llamada integrina beta 8. Las mutaciones en el gen que codifica ITGB8 se han relacionado con una variedad de trastornos, incluyendo la enfermedad pulmonar intersticial y la enfermedad cerebrovascular. Además, se ha demostrado que la expresión anormal de ITGB8 está implicada en el desarrollo de varios tipos de cáncer.")
-        elif selected_dataset == 'HES6':
-            st.write("HES6 es el acrónimo del gen humano factor de regulación de la expresión de la proteína de la piel 6, que codifica una proteína llamada Hairy and Enhancer of Split 6 (HES6). Se ha demostrado que la expresión anormal de HES6 está implicada en el desarrollo de varios tipos de cáncer, incluyendo el cáncer de mama y el cáncer de próstata. Además, se ha relacionado con trastornos neurológicos como la enfermedad de Alzheimer y la esquizofrenia.")
-        elif selected_dataset == 'RPS27L':
-            st.write("RPS27L es el acrónimo del gen humano proteína ribosomal S27 como símil, que codifica una proteína llamada ribosomal protein S27-like (RPS27L). Se ha demostrado que la expresión anormal de RPS27L está relacionada con varios tipos de cáncer, incluyendo el cáncer de mama, el cáncer de próstata y el cáncer de pulmón. Además, se ha relacionado con trastornos neurológicos como la enfermedad de Parkinson.")
-        elif selected_dataset == 'GFAP':
-            st.write("GFAP es el acrónimo del gen humano proteína ácida fibrilar glial, que codifica una proteína llamada proteína ácida fibrilar glial (GFAP). La expresión anormal de GFAP se ha relacionado con varios trastornos neurológicos, incluyendo la enfermedad de Alzheimer, la esclerosis múltiple y la epilepsia. No se ha encontrado relación con el cáncer")
-        elif selected_dataset == 'TRIM2':
-            st.write("TRIM2 es el acrónimo del gen humano proteína 2 con dedos de tipo RING y motivos de leucina, que codifica una proteína llamada TRIM2 (también conocida como tripartite motif-containing protein 2). Se ha demostrado que la proteína TRIM2 desempeña un papel importante en la regulación de la morfología y función de las neuronas, incluyendo la formación de dendritas y la maduración sináptica. La expresión anormal de TRIM2 se ha relacionado con trastornos neurológicos como la esquizofrenia y la epilepsia. No se ha encontrado relación con el cáncer")
-        elif selected_dataset == 'APOE':
-            st.write("APOE es el acrónimo del gen humano apolipoproteína E, que codifica una proteína llamada apolipoproteína E. Además, también se ha demostrado que APOE ε4 se asocia con un mayor riesgo de enfermedad cardiovascular y de accidente cerebrovascular. No se ha encontrado relación con el cáncer")
-        elif selected_dataset == 'ANXA5':
-            st.write("ANXA5 es el acrónimo del gen humano anexina A5, que codifica una proteína llamada anexina A5 (también conocida como anexina V). Además, ANXA5 también se ha relacionado con la apoptosis celular y la inflamación. Se ha demostrado que la deficiencia de ANXA5 se asocia con un mayor riesgo de trombosis y abortos espontáneos recurrentes en mujeres embarazadas. No se ha encontrado relación con el cáncer")
-        elif selected_dataset == 'NAV1':
-            st.write("NAV1 es una abreviación comúnmente utilizada para referirse al canal de sodio dependiente de voltaje tipo 1, que está codificado por el gen SCN1A en los humanos. Las mutaciones en el gen SCN1A se han relacionado con varias enfermedades neurológicas, incluyendo la epilepsia y el trastorno del espectro autista. No se ha encontrado relación con el cáncer")
-        elif selected_dataset == 'TMSB4X':
-            st.write("TMSB4X es el nombre del gen humano que codifica la proteína tímica de precursores de timosina beta-4 (TMSB4), también conocida como la proteína de la familia de la timosina beta-4 (TB4). Se ha relacionado con la protección del corazón y el cerebro contra el daño isquémico, y se ha investigado como un posible tratamiento para las enfermedades cardiovasculares y neurológicas. En los humanos, la proteína TMSB4X se expresa principalmente en el timo, pero también se encuentra en otros tejidos como la piel, los músculos y el cerebro. No se ha relacionado con el cáncer")
-        elif selected_dataset == 'HSPB1':
-            st.write("HSPB1 es el nombre de un gen humano que codifica la proteína de choque térmico 27 (HSP27), también conocida como proteína relacionada con la proteína quinasa mitógena 1 (PRKM1P1).  Además, la proteína HSP27 también se ha relacionado con la regulación de la apoptosis (muerte celular programada) y la modulación de la respuesta inmunitaria. Las mutaciones en el gen HSPB1 se han relacionado con varias enfermedades humanas, incluyendo distrofia muscular y neuropatías.")
-        elif selected_dataset == 'SEC61G':
-            st.write("Es un gen que codifica una subunidad de la proteína translocon, que es un complejo proteico en la membrana del retículo endoplásmico (ER) que está involucrado en la translocación de proteínas a través de la membrana del ER durante su síntesis. Se ha encontrado que la expresión anormal de SEC61G se asocia con varios tipos de cáncer, como el cáncer de pulmón y el cáncer de mama. Además, SEC61G está involucrado en la regulación de la señalización de la proteína Wnt, que está desregulada en muchos tipos de cáncer.")
-        elif selected_dataset == 'IGSF6':
-            st.write("Es un gen que codifica una proteína de la superfamilia de inmunoglobulinas, que se expresa principalmente en las células del sistema nervioso central. Aunque no se ha demostrado una relación directa entre la mutación en IGSF6 y el cáncer, se ha informado que la expresión anormal de IGSF6 se asocia con la progresión del cáncer de próstata y la resistencia a la terapia hormonal.")
-        elif selected_dataset == 'IGFBP2':
-            st.write("es un gen que codifica la proteína unida al factor de crecimiento similar a la insulina 2 (IGFBP2), que se une y regula los efectos biológicos del factor de crecimiento similar a la insulina 1 (IGF1) y el factor de crecimiento similar a la insulina 2 (IGF2). La expresión anormal de IGFBP2 se ha relacionado con varios tipos de cáncer, incluyendo cáncer de próstata, cáncer de mama, cáncer de ovario y cáncer colorrectal. ")
-        elif selected_dataset == 'RPLP1':
-            st.write("Es un gen que codifica una proteína ribosomal, que forma parte de la subunidad grande del ribosoma. Además, se ha encontrado que RPLP1 juega un papel importante en la regulación de la apoptosis (muerte celular programada) y la proliferación celular en células cancerosas. ")
-        elif selected_dataset == 'CSF1R':
-            st.write("Es un gen que codifica el receptor del factor estimulador de colonias de macrófagos 1 (CSF1), que se expresa en células del sistema inmunológico y juega un papel importante en la diferenciación, supervivencia y función de los macrófagos.  Se ha encontrado que la sobreexpresión de CSF1R se relaciona con varios tipos de cáncer, incluyendo cáncer de mama, cáncer de ovario, cáncer de próstata y cáncer colorrectal.")
-        elif selected_dataset == 'NACA':
-            st.write("Gen que codifica una proteína de unión a calcio y ácidos nucleicos que se encuentra en el núcleo celular y en la mitocondria. i bien no se ha demostrado que NACA esté directamente involucrado en el cáncer, se ha encontrado que NACA se expresa diferencialmente en diferentes tipos de cáncer, como cáncer de pulmón y cáncer de próstata.")
-        elif selected_dataset == 'HTRA1':
-            st.write("El gen HTRA1 (High-Temperature Requirement A1) codifica para una proteína que pertenece a una familia de proteasas serina. Las mutaciones en el gen HTRA1 se han relacionado con varios tipos de cáncer, incluyendo cáncer de pulmón, cáncer colorrectal, cáncer de páncreas y cáncer de mama. ")
-        elif selected_dataset == 'CSF3R':
-            st.write("Codifica para un receptor de la proteína de factor estimulante de colonias 3 (CSF3), también conocida como factor estimulante de colonias de granulocitos (G-CSF). Las mutaciones en el gen CSF3R se han relacionado con varias enfermedades malignas de la sangre, como la leucemia mieloide crónica atípica y la neutropenia congénita severa. ")
-        elif selected_dataset == 'CREG1':
-            st.write("El gen CREG1 (Cellular Repressor of E1A-stimulated Genes 1) codifica para una proteína que se ha encontrado que regula la expresión de otros genes en diferentes tipos de células, incluyendo células musculares, células nerviosas y células inmunitarias. Las mutaciones en el gen CREG1 se han relacionado con varios tipos de cáncer, incluyendo cáncer de mama, cáncer de próstata, cáncer de páncreas y cáncer colorrectal. ")
-        elif selected_dataset == 'FAM107B':
-            st.write("El gen FAM107B (Family with sequence similarity 107 member B) codifica para una proteína que se ha encontrado que juega un papel importante en la proliferación celular y la supervivencia de las células. Las mutaciones en el gen FAM107B se han relacionado con varios tipos de cáncer, incluyendo cáncer de pulmón, cáncer de mama y cáncer de ovario.")
-        elif selected_dataset == 'SLAMF9':
-            st.write("El gen SLAMF9 (Signaling Lymphocytic Activation Molecule Family Member 9) codifica para una proteína que se ha encontrado que juega un papel en la activación y regulación de las células del sistema inmunológico. Las mutaciones en el gen SLAMF9 no se han relacionado con un mayor riesgo de desarrollar cáncer. Sin embargo, se ha encontrado que la proteína SLAMF9 puede estar implicada en la respuesta inmune contra el cáncer.")
-        elif selected_dataset == 'GLDN':
-            st.write("El gen GLDN (Gliomedin) codifica para una proteína que se encuentra principalmente en las células de Schwann, que son células de soporte que rodean y aíslan las fibras nerviosas periféricas en el sistema nervioso. Las mutaciones en el gen GLDN no se han relacionado con un mayor riesgo de desarrollar cáncer.")
-        elif selected_dataset == 'EMP3':
-            st.write("El gen EMP3 (Epithelial Membrane Protein 3) codifica para una proteína que se encuentra en la membrana celular de varias células, incluyendo células epiteliales, células nerviosas y células del sistema inmunológico. Las mutaciones en el gen EMP3 se han relacionado con varios tipos de cáncer, incluyendo cáncer de mama, cáncer de pulmón y cáncer de páncreas.")
-        elif selected_dataset == 'COMMD6':
-            st.write("Codifica para una proteína que se ha encontrado que está involucrada en la regulación del metabolismo del cobre y la homeostasis del cobre en las células. Las mutaciones en el gen COMMD6 no se han relacionado con un mayor riesgo de desarrollar cáncer. ")
-        elif selected_dataset == 'ANXA2':
-            st.write("El gen ANXA2 (Annexin A2) codifica para una proteína que se encuentra en la membrana celular y en el citoplasma de muchas células diferentes. La proteína ANXA2 está involucrada en una variedad de procesos celulares, incluyendo la adhesión celular, la migración y la endocitosis. Las mutaciones en el gen ANXA2 no se han relacionado con un mayor riesgo de desarrollar cáncer.")
-        elif selected_dataset == 'RPL38':
-            st.write("El gen RPL38 (Ribosomal Protein L38) codifica para una proteína ribosomal que se encuentra en el complejo ribosomal, el cual está involucrado en la síntesis de proteínas a partir de ARNm en las células. Las mutaciones en el gen RPL38 no se han relacionado con un mayor riesgo de desarrollar cáncer.")
-        elif selected_dataset == 'CEBPD':
-            st.write("El gen CEBPD (CCAAT/enhancer binding protein delta) codifica para un factor de transcripción que regula la expresión de otros genes en la célula. La proteína CEBPD es importante en la regulación de la diferenciación celular, la inflamación y la respuesta al estrés. Las mutaciones en el gen CEBPD no se han relacionado con un mayor riesgo de desarrollar cáncer.")
-        elif selected_dataset == 'APBB1IP':
-            st.write("El gen APBB1IP (Amyloid Beta Precursor Protein Binding Family B Member 1 Interacting Protein) codifica para una proteína que interactúa con la proteína precursora de la amiloide beta (APP), que está involucrada en la formación de placas amiloides en el cerebro, una característica distintiva de la enfermedad de Alzheimer. Las mutaciones en el gen APBB1IP no se han relacionado con un mayor riesgo de desarrollar cáncer. Sin embargo, se ha demostrado que la proteína APBB1IP está involucrada en la regulación de la apoptosis, la respuesta al estrés y la dinámica de los microtúbulos.")
-        elif selected_dataset == 'HLADRB6':
-            st.write("El gen HLADRB6 es parte del complejo de histocompatibilidad principal (MHC, por sus siglas en inglés) de clase II y codifica para una subunidad beta de la molécula de antígeno del MHC de clase II. No se ha informado que las mutaciones en HLADRB6 estén directamente relacionadas con un mayor riesgo de desarrollar cáncer.")
-        elif selected_dataset == 'TUBGCP2':
-            st.write("El gen TUBGCP2 (Tubulin Gamma Complex Associated Protein 2) codifica para una proteína que forma parte de un complejo proteico conocido como gamma-tubulina complejo, que es esencial para la nucleación y organización de microtúbulos en la célula. Mutaciones en TUBGCP2 no se han relacionado directamente con un mayor riesgo de desarrollar cáncer. Sin embargo, se ha demostrado que la sobreexpresión de TUBGCP2 está relacionada con la proliferación celular aumentada y la progresión tumoral en varios tipos de cáncer, incluyendo el cáncer de ovario, el cáncer de mama y el cáncer colorrectal.")
-        elif selected_dataset == 'LCP2':
-            st.write("El gen LCP2 (también conocido como SLP-76) codifica para una proteína adaptadora que se asocia con los receptores de células T y juega un papel importante en la transducción de señales en la célula T. Mutaciones en el gen LCP2 no se han relacionado directamente con un mayor riesgo de desarrollar cáncer. Sin embargo, se ha demostrado que la sobreexpresión de LCP2 está relacionada con la progresión tumoral y la metástasis en varios tipos de cáncer, incluyendo el cáncer de próstata, el cáncer de mama y el cáncer de colon.")
-        elif selected_dataset == 'LOC100505854':
-            st.write("LOC100505854 es un identificador genómico que se asigna a una región del genoma humano que aún no se ha caracterizado completamente y se conoce como una región no codificante del genoma (también llamada ADN basura o ADN no codificante). Actualmente no se conocen mutaciones específicas en LOC100505854 que estén directamente relacionadas con el cáncer.")
-        elif selected_dataset == 'IFI44':
-            st.write("El gen IFI44 (Interferon-induced protein 44) codifica para una proteína que se expresa en respuesta a la estimulación por interferones tipo I y tipo II, que son proteínas importantes en la respuesta inmune antiviral y antitumoral. Se ha sugerido que IFI44 puede tener un papel en la promoción del crecimiento y la supervivencia de las células tumorales a través de su capacidad para regular la respuesta inmunitaria y la inflamación. Además, se ha encontrado que la sobreexpresión de IFI44 puede estar relacionada con la progresión del cáncer y la resistencia a la quimioterapia.")
-        elif selected_dataset == 'GNG11':
-            st.write("El gen GNG11 codifica para una subunidad gamma de proteína G, que forma parte de la familia de proteínas G, que son importantes en la señalización celular. se ha encontrado que la expresión de GNG11 está aumentada en varios tipos de cáncer, incluyendo el cáncer de mama, el cáncer de próstata y el cáncer de ovario.")
-
-    with col3:
         st.subheader("Esenario")
         escenario = ['1: TP vs TC', '2: TP vs NP', '3: NP vs TPC', '4: TC vs TP vs NP']
         st.write("Los escenarios se utilizaron para entrenar los modelos y asi definir cuales serian los biomarcadores mas representativos apra el glioblastoma.")
@@ -358,6 +217,145 @@ else:
             st.write("Se realiza la clasificación de la periferia normal (NP) contra la unión de la periferia del tumor (TP) y el núcleo del tumor (TC)")
         elif selected_dataset == '4: TC vs TP vs NP':
             st.write("Se realiza la clasificación independiente del núcleo del tumor (TC), la periferia del tumor (TP) y la periferia normal (NP)")
+
+    st.subheader("Biomarcador")
+    gen_type = ['ATP1A2', 'NMB', 'SPARCL1', 'USMG5', 'PTN', 'PCSK1N', 'ANAPC11', 'TMSB10', 'TMEM144', 'PSMB4', 'NRBP2', 'FTL',
+                'MIR3682', 'S1PR1', 'PRODH', 'SRP9', 'GAP43', 'RPL30', 'LAMA5', 'ECHDC2', 'EGFR', 'CALM1', 'APOD', 'SPOCK1', 'ANXA1', 'PTGDS', 'EIF1', 'VIM', 'MGLL', 'ITM2C', 'PLLP',
+                'ITGB8', 'HES6', 'RPS27L', 'GFAP', 'TRIM2', 'APOE', 'ANXA5', 'NAV1', 'TMSB4X', 'HSPB1', 'SEC61G', 'IGSF6', 'IGFBP2', 'RPLP1', 'CSF1R', 'NACA', 'HTRA1', 'CSF3R', 'CREG1', 'FAM107B', 'SLAMF9',
+                'GLDN', 'EMP3', 'COMMD6', 'ANXA2', 'RPL38', 'CEBPD', 'APBB1IP', 'HLADRB6', 'TUBGCP2', 'LCP2', 'LOC100505854', 'IFI44', 'GNG11']
+    st.write("Un biomarcador es una medida objetiva de una característica biológica que puede ser utilizada para indicar la presencia, gravedad o progresión de una enfermedad, así como para evaluar la eficacia de un tratamiento.")
+    selected_dataset = st.selectbox('Seleccionar un gen:', gen_type)
+
+    if selected_dataset == 'ATP1A2':
+        st.write("ATP1A2 codifica una subunidad de la bomba de sodio-potasio, que es responsable del mantenimiento del equilibrio de iones en las células. Mutaciones en este gen se han relacionado con migrañas familiares hemipléjicas. No se ha demostrado ninguna relación con glioblastoma u otros cánceres.")
+    elif selected_dataset == 'NMB':
+        st.write("NMB codifica una proteína relacionada con la hormona liberadora de gastrina. Se ha demostrado que la sobreexpresión de NMB está asociada con la progresión tumoral en varios tipos de cáncer, incluido el glioblastoma.")
+    elif selected_dataset == 'SPARCL1':
+        st.write("SPARCL1 codifica una proteína matricial extracelular que está involucrada en la adhesión celular y la migración. La baja expresión de SPARCL1 se ha relacionado con la progresión del glioblastoma y otros tipos de cáncer.")
+    elif selected_dataset == 'USMG5':
+        st.write("USMG5 codifica una proteína mitocondrial que está involucrada en la regulación de la actividad de la cadena de transporte de electrones. No se ha demostrado una relación directa entre USMG5 y el glioblastoma u otros cánceres.")
+    elif selected_dataset == 'PTN':
+        st.write("PTN codifica una proteína de la familia de las citoquinas que está involucrada en la regulación del crecimiento y la diferenciación celular. La sobreexpresión de PTN se ha relacionado con la progresión tumoral en varios tipos de cáncer, incluido el glioblastoma.")
+    elif selected_dataset == 'PCSK1N':
+        st.write("PCSK1N codifica una proteína que actúa como inhibidor de la convertasa de proproteína subtilisina/kexina tipo 1 (PCSK1). No se ha demostrado una relación directa entre PCSK1N y el glioblastoma u otros cánceres.")
+    elif selected_dataset == 'ANAPC11':
+        st.write("ANAPC11 codifica una subunidad del complejo anafase-promoción que está involucrado en la regulación del ciclo celular. Se ha demostrado que la sobreexpresión de ANAPC11 está asociada con la progresión tumoral en varios tipos de cáncer, incluido el glioblastoma.")
+    elif selected_dataset == 'TMSB10':
+        st.write("TMSB10 codifica una proteína que forma parte del citoesqueleto de actina. Se ha demostrado que la sobreexpresión de TMSB10 está asociada con la progresión tumoral en varios tipos de cáncer, incluido el glioblastoma.")
+    elif selected_dataset == 'TMEM144':
+        st.write("TMEM144 codifica una proteína transmembrana que se expresa en el retículo endoplásmico. No se ha demostrado una relación directa entre TMEM144 y el glioblastoma u otros cánceres.")
+    elif selected_dataset == 'PSMB4':
+        st.write("PSMB4 es un gen que codifica para una subunidad del proteasoma 20S, que es una compleja maquinaria intracelular encargada de degradar proteínas no deseadas. Se ha demostrado que la sobreexpresión de PSMB4 está relacionada con la progresión tumoral y la resistencia a la quimioterapia en varios tipos de cáncer, incluyendo el glioblastoma.")
+    elif selected_dataset == 'NRBP2':
+        st.write("NRBP2 es un gen que codifica para un factor de transcripción implicado en la regulación de la apoptosis y la respuesta a estrés celular. Se ha demostrado que la sobreexpresión de NRBP2 está relacionada con la invasión y la metástasis en varios tipos de cáncer, incluyendo el glioblastoma.")
+    elif selected_dataset == 'FTL':
+        st.write("FTL es un gen que codifica para la subunidad ligera de la ferritina, una proteína que se encarga de almacenar hierro intracelular. Se ha demostrado que la sobreexpresión de FTL está relacionada con la proliferación celular y la resistencia a la quimioterapia en el glioblastoma.")
+    elif selected_dataset == 'MIR3682':
+        st.write("MIR3682 es un gen que codifica para un microARN, un tipo de ARN no codificante que regula la expresión génica a nivel post-transcripcional. Se ha demostrado que MIR3682 actúa como un supresor tumoral en el glioblastoma, inhibiendo la proliferación celular y la invasión.")
+    elif selected_dataset == 'S1PR1':
+        st.write("S1PR1 es un gen que codifica para el receptor de esfingosina-1-fosfato, un mediador de señalización celular implicado en la regulación de procesos fisiológicos y patológicos, como la supervivencia celular, la angiogénesis y la progresión tumoral. Se ha demostrado que la sobreexpresión de S1PR1 está relacionada con la proliferación celular y la invasión en varios tipos de cáncer, incluyendo el glioblastoma.")
+    elif selected_dataset == 'PRODH':
+        st.write("PRODH es un gen que codifica para la proteína prolina oxidasa, una enzima que cataliza la oxidación de prolina a ácido pirrólido-2-carboxílico. Se ha demostrado que la sobreexpresión de PRODH está relacionada con la apoptosis y la disminución de la viabilidad celular en el glioblastoma.")
+    elif selected_dataset == 'SRP9':
+        st.write("SRP9 es un gen que codifica para una subunidad de la partícula de reconocimiento de señal, una compleja maquinaria intracelular implicada en la translocación de proteínas hacia el retículo endoplásmico. Aunque no se ha demostrado una relación directa entre SRP9 y el glioblastoma, se ha sugerido que la expresión de SRP9 podría servir como biomarcador de pronóstico en algunos tipos de cáncer.")
+    elif selected_dataset == 'GAP43':
+        st.write("GAP43 es una proteína que desempeña un papel en el crecimiento y la regeneración de los axones. También se ha encontrado que su expresión está aumentada en ciertos tipos de cánceres, incluyendo el glioblastoma.")
+    elif selected_dataset == 'RPL30':
+        st.write("RPL30 es un gen que codifica para una proteína ribosómica que forma parte del complejo ribosómico y está involucrado en la síntesis de proteínas. Se ha encontrado que su expresión está disminuida en ciertos tipos de cánceres, incluyendo el glioblastoma.")
+    elif selected_dataset == 'LAMA5':
+        st.write("LAMA5 es un gen que codifica para una proteína de la matriz extracelular llamada laminina 5. Se ha encontrado que su expresión está aumentada en ciertos tipos de cánceres, incluyendo el glioblastoma, y se ha propuesto que juega un papel en la invasión y la progresión tumoral.")
+    elif selected_dataset == 'ECHDC2':
+        st.write("ECHDC2 es un gen que codifica para una enoyl-CoA hidratasa que está involucrada en la beta-oxidación de los ácidos grasos. Hasta ahora, no se ha reportado una asociación directa entre ECHDC2 y el glioblastoma.")
+    elif selected_dataset == 'EGFR':
+        st.write("EGFR es un gen que codifica para el receptor del factor de crecimiento epidérmico (EGFR), que está involucrado en la señalización celular y la regulación del crecimiento y la diferenciación celular. Mutaciones y amplificaciones de EGFR se han encontrado en ciertos tipos de cánceres, incluyendo el glioblastoma, lo que sugiere que puede desempeñar un papel en la progresión tumoral y la resistencia a la terapia.")
+    elif selected_dataset == 'CALM1':
+        st.write("CALM1 es un gen que codifica para la calmodulina, una proteína reguladora que se une al calcio y está involucrada en la señalización celular. Hasta ahora, no se ha reportado una asociación directa entre CALM1 y el glioblastoma.")
+    elif selected_dataset == 'APOD':
+        st.write("APOD es un gen que codifica para la apolipoproteína D, una proteína transportadora de lípidos que se ha implicado en varios procesos fisiológicos, incluyendo la respuesta al estrés y la neuroprotección. Hasta ahora, no se ha reportado una asociación directa entre APOD y el glioblastoma.")
+    elif selected_dataset == 'SPOCK1':
+        st.write("SPOCK1 es un gen que codifica para una proteína de la matriz extracelular llamada SPOCK1 (Sparc/osteonectin, cwcv and kazal-like domains proteoglycan 1). Se ha encontrado que su expresión está aumentada en ciertos tipos de cánceres, incluyendo el glioblastoma, y se ha propuesto que puede desempeñar un papel en la invasión y la progresión tumoral.")
+    elif selected_dataset == 'ANXA1':
+        st.write("ANXA1 es un gen que codifica para la proteína anexina A1, la cual tiene un papel en la regulación de la respuesta inmune y la inflamación. Además, ANXA1 ha sido implicado en la progresión tumoral y la invasión en varios tipos de cáncer, incluyendo el glioblastoma. Se ha demostrado que la sobreexpresión de ANXA1 en células de glioblastoma se asocia con una mayor capacidad invasiva y una menor supervivencia del paciente.")
+    elif selected_dataset == 'PTGDS':
+        st.write("PTGDS es un gen que codifica para la prostaglandina D2 sintasa, una enzima que cataliza la producción de prostaglandina D2, una molécula que tiene funciones diversas en el cuerpo, incluyendo la regulación del sueño y la inflamación. En estudios recientes, se ha observado que la expresión de PTGDS está disminuida en glioblastomas, lo que sugiere un posible papel como supresor tumoral.")
+    elif selected_dataset == 'EIF1':
+        st.write("EIF1 es un gen que codifica para la proteína de iniciación de la traducción 1, la cual juega un papel importante en el proceso de la síntesis de proteínas en la célula. Si bien no se ha identificado una relación directa entre EIF1 y glioblastomas, algunos estudios sugieren que las mutaciones en genes relacionados con la síntesis de proteínas pueden estar implicadas en el desarrollo del cáncer.")
+    elif selected_dataset == 'VIM':
+        st.write("VIM es un gen que codifica para la vimentina, una proteína que forma parte del citoesqueleto y tiene un papel importante en la estructura y la migración celular. Se ha observado que la expresión de VIM está aumentada en glioblastomas, lo que sugiere un posible papel en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'MGLL':
+        st.write("MGLL es un gen que codifica para la monoacilglicerol lipasa, una enzima que cataliza la degradación de los lípidos. Si bien no se ha identificado una relación directa entre MGLL y glioblastomas, algunos estudios sugieren que la actividad de la lipasa puede estar implicada en la invasión tumoral.")
+    elif selected_dataset == 'ITM2C':
+        st.write("ITM2C es un gen que codifica para la proteína integral de membrana 2C, la cual tiene un papel en la regulación de la señalización celular y la apoptosis. Si bien no se ha identificado una relación directa entre ITM2C y glioblastomas, algunos estudios sugieren que la proteína puede tener un papel como supresor tumoral.")
+    elif selected_dataset == 'PLLP':
+        st.write("PLLP es un gen que codifica para la proteína rica en prolina, leucina y lisina, la cual tiene un papel en la regulación de la señalización celular y la migración. Si bien no se ha identificado una relación directa entre PLLP y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'ITGB8':
+        st.write("ITGB8 es un gen que codifica para la subunidad beta 8 de la integrina, una proteína que juega un papel importante en la adhesión celular y la señalización. En estudios recientes, se ha observado que la expresión de ITGB8 está aumentada en glioblastomas, lo que sugiere un posible papel en la progresión tumoral y la invasión. Además, se ha sugerido que la inhibición de ITGB8 podría ser una estrategia terapéutica efectiva para el tratamiento de glioblastomas.")
+    elif selected_dataset == 'HES6':
+        st.write("HES6 es un gen que codifica para un factor de transcripción que tiene un papel en la regulación del desarrollo embrionario y la diferenciación celular. Si bien no se ha identificado una relación directa entre HES6 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la resistencia a la quimioterapia.")
+    elif selected_dataset == 'RPS27L':
+        st.write("RPS27L es un gen que codifica para la proteína ribosomal 40S subunidad 27L, la cual tiene un papel en la síntesis de proteínas en la célula. Si bien no se ha identificado una relación directa entre RPS27L y glioblastomas, algunos estudios sugieren que las mutaciones en genes relacionados con la síntesis de proteínas pueden estar implicadas en el desarrollo del cáncer.")
+    elif selected_dataset == 'GFAP':
+        st.write("GFAP es un gen que codifica para la proteína ácida fibrilar de la gliana, una proteína que se expresa en las células gliales del sistema nervioso central. En glioblastomas, se ha observado que la expresión de GFAP está aumentada, lo que se utiliza como un marcador de diagnóstico para la enfermedad.")
+    elif selected_dataset == 'TRIM2':
+        st.write("TRIM2 es un gen que codifica para una proteína que tiene un papel en la regulación de la señalización celular y la organización del citoesqueleto. Si bien no se ha identificado una relación directa entre TRIM2 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'APOE':
+        st.write("APOE es un gen que codifica para la apolipoproteína E, una proteína que juega un papel importante en el transporte de lípidos en el cuerpo. En estudios recientes, se ha observado que la variante E4 de APOE está asociada con un mayor riesgo de desarrollar glioblastomas, posiblemente debido a su papel en la regulación de la respuesta inflamatoria.")
+    elif selected_dataset == 'ANXA5':
+        st.write("ANXA5 es un gen que codifica para la proteína anexina A5, la cual tiene un papel en la regulación de la coagulación sanguínea y la apoptosis. Si bien no se ha identificado una relación directa entre ANXA5 y glioblastomas, algunos estudios sugieren que la proteína puede tener un papel como supresor tumoral.")
+    elif selected_dataset == 'NAV1':
+        st.write("NAV1 es un gen que codifica para el canal de sodio oltage-dependiente Nav1.1, una proteína que tiene un papel importante en la generación y conducción de señales eléctricas en las neuronas. Si bien no se ha identificado una relación directa entre NAV1 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la migración y la invasión celular en otros tipos de cáncer.")
+    elif selected_dataset == 'TMSB4X':
+        st.write("TMSB4X es un gen que codifica para la tímoseina beta-4, una proteína que tiene un papel en la regulación del citoesqueleto y la migración celular. Si bien no se ha identificado una relación directa entre TMSB4X y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'HSPB1':
+        st.write("HSPB1 es un gen que codifica para la proteína de choque térmico 27, la cual tiene un papel en la protección celular contra el estrés y la apoptosis. En glioblastomas, se ha observado que la expresión de HSPB1 está aumentada, lo que sugiere un posible papel en la resistencia a la quimioterapia y la radioterapia.")
+    elif selected_dataset == 'SEC61G':
+        st.write("SEC61G es un gen que codifica para una subunidad del complejo de proteínas de la membrana del retículo endoplásmico, que tiene un papel en la translocación de proteínas a través de la membrana. Si bien no se ha identificado una relación directa entre SEC61G y glioblastomas, algunos estudios sugieren que las mutaciones en genes relacionados con la síntesis y la translocación de proteínas pueden estar implicadas en el desarrollo del cáncer.")
+    elif selected_dataset == 'IGSF6':
+        st.write("IGSF6 es un gen que codifica para la proteína de superficie celular inmunoglobulina superfamily member 6, la cual tiene un papel en la adhesión celular y la señalización. Si bien no se ha identificado una relación directa entre IGSF6 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'IGFBP2':
+        st.write("IGFBP2 es un gen que codifica para la proteína de unión a IGF-2, la cual tiene un papel en la regulación del crecimiento y la diferenciación celular. En glioblastomas, se ha observado que la expresión de IGFBP2 está aumentada, lo que sugiere un posible papel en la progresión tumoral y la resistencia a la quimioterapia.")
+    elif selected_dataset == 'RPLP1':
+        st.write("RPLP1 es un gen que codifica para la proteína ribosomal 60S subunidad 41, la cual tiene un papel en la síntesis de proteínas en la célula. Si bien no se ha identificado una relación directa entre RPLP1 y glioblastomas, algunos estudios sugieren que las mutaciones en genes relacionados con la síntesis de proteínas pueden estar implicadas en el desarrollo del cáncer.")
+    elif selected_dataset== 'CSF1R':
+        st.write("CSF1R es un gen que codifica para el receptor del factor estimulante de colonias de macrófagos 1, la cual tiene un papel en la regulación de la proliferación, diferenciación y supervivencia de los macrófagos. En glioblastomas, se ha observado que la expresión de CSF1R está aumentada, lo que sugiere un posible papel en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'NACA':
+        st.write("NACA es un gen que codifica para la proteína asociada a la histona H2A-H2B, la cual tiene un papel en la regulación de la expresión génica y la organización de la cromatina. Si bien no se ha identificado una relación directa entre NACA y glioblastomas, algunos estudios sugieren que las mutaciones en genes relacionados con la organización de la cromatina pueden estar implicadas en el desarrollo del cáncer.")
+    elif selected_dataset == 'HTRA1':
+        st.write("HTRA1 es un gen que codifica para la proteína serina proteasa HTRA1, la cual tiene un papel en la regulación de la señalización celular y la respuesta al estrés. En glioblastomas, se ha observado que la expresión de HTRA1 está disminuida, lo que sugiere un posible papel en la progresión tumoral y la resistencia a la apoptosis.")
+    elif selected_dataset == 'CSF3R':
+        st.write("CSF3R es un gen que codifica para el receptor del factor estimulante de colonias de granulocitos, la cual tiene un papel en la regulación de la proliferación, diferenciación y supervivencia de los granulocitos. En glioblastomas, se ha observado que la expresión de CSF3R está aumentada, lo que sugiere un posible papel en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'CREG1':
+        st.write("CREG1 es un gen que codifica para la proteína de crecimiento celular regulado por calcio 1, la cual tiene un papel en la proliferación y diferenciación celular. Si bien no se ha identificado una relación directa entre CREG1 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la invasión en otros tipos de cáncer.")
+    elif selected_dataset == 'FAM107B':
+        st.write("FAM107B es un gen que codifica para la proteína FAM107B, la cual tiene un papel en la regulación del ciclo celular y la apoptosis. Si bien no se ha identificado una relación directa entre FAM107B y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la resistencia a la quimioterapia en otros tipos de cáncer.")
+    elif selected_dataset == 'SLAMF9':
+        st.write("SLAMF9 es un gen que codifica para la proteína 9 de la familia de moléculas de señalización y activación de linfocitos, la cual tiene un papel en la regulación de la respuesta inmunitaria. Si bien no se ha identificado una relación directa entre SLAMF9 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la respuesta inmunitaria en otros tipos de cáncer.")
+    elif selected_dataset == 'GLDN':
+        st.write("GLDN es un gen que codifica para la proteína gliomedina, la cual tiene un papel en la adhesión celular y la organización del citoesqueleto. En glioblastomas, se ha observado que la expresión de GLDN está aumentada, lo que sugiere un posible papel en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'EMP3':
+        st.write("EMP3 es un gen que codifica para la glicoproteína de membrana 3, la cual tiene un papel en la regulación de la adhesión celular y la señalización intracelular. En glioblastomas, se ha observado que la expresión de EMP3 está aumentada, lo que sugiere un posible papel en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'COMMD6':
+        st.write("COMMD6 es un gen que codifica para la proteína 6 de la familia de proteínas de la comunicación de los dominios, la cual tiene un papel en la regulación de la respuesta inflamatoria y la homeostasis celular. Si bien no se ha identificado una relación directa entre COMMD6 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la respuesta inflamatoria en otros tipos de cáncer.")
+    elif selected_dataset == 'ANXA2':
+        st.write("ANXA2 es un gen que codifica para la proteína anexina A2, la cual tiene un papel en la regulación de la adhesión celular y la señalización intracelular. En glioblastomas, se ha observado que la expresión de ANXA2 está aumentada, lo que sugiere un posible papel en la progresión tumoral y la invasión.")
+    elif selected_dataset == 'RPL38':
+        st.write("RPL38 es un gen que codifica para la proteína ribosomal L38, la cual tiene un papel en la síntesis de proteínas. Si bien no se ha identificado una relación directa entre RPL38 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la progresión tumoral y la respuesta a la quimioterapia en otros tipos de cáncer.")
+    elif selected_dataset == 'CEBPD':
+        st.write("CEBPD es un gen que codifica para el factor de transcripción C/EBP delta, la cual tiene un papel en la regulación de la diferenciación celular y la respuesta inflamatoria. En glioblastomas, se ha observado que la expresión de CEBPD está disminuida, lo que sugiere un posible papel en la progresión tumoral y la resistencia a la quimioterapia.")
+    elif selected_dataset == 'APBB1IP':
+        st.write("APBB1IP es un gen que codifica para la proteína interactuante con la APP y el receptor de lipoproteínas, la cual tiene un papel en la regulación del transporte de proteínas y lípidos. Si bien no se ha identificado una relación directa entre APBB1IP y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación del ciclo celular y la apoptosis en otros tipos de cáncer.")
+    elif selected_dataset == 'HLADRB6':
+        st.write("HLADRB6 es un gen que codifica para una subunidad del complejo mayor de histocompatibilidad clase II, la cual tiene un papel en la presentación de antígenos a las células T del sistema inmunitario. Si bien no se ha identificado una relación directa entre HLADRB6 y glioblastomas, algunos estudios sugieren que la expresión de los genes del complejo mayor de histocompatibilidad clase II puede estar asociada con una mejor respuesta a la inmunoterapia en algunos tipos de cáncer.")
+    elif selected_dataset == 'TUBGCP2':
+        st.write("TUBGCP2 es un gen que codifica para la proteína gamma-tubulina complejo 2, la cual tiene un papel en la nucleación y organización de los microtúbulos. Si bien no se ha identificado una relación directa entre TUBGCP2 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la mitosis y la progresión tumoral en otros tipos de cáncer.")
+    elif selected_dataset == 'LCP2':
+        st.write("LCP2 es un gen que codifica para la proteína p85 de la cinasa linfocitaria, la cual tiene un papel en la señalización intracelular y la activación de las células T del sistema inmunitario. Si bien no se ha identificado una relación directa entre LCP2 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la respuesta inmunitaria en otros tipos de cáncer.")
+    elif selected_dataset == 'LOC100505854':
+        st.write("LOC100505854 es un gen cuya función aún no ha sido completamente caracterizada. Si bien no se ha identificado una relación directa entre LOC100505854 y glioblastomas, algunos estudios sugieren que la expresión de genes no codificantes puede estar implicada en la regulación de la expresión génica y la progresión tumoral en algunos tipos de cáncer.")
+    elif selected_dataset == 'IFI44':
+        st.write("IFI44 es un gen que codifica para la proteína interferón-inducible 44, la cual tiene un papel en la respuesta antiviral y la regulación de la señalización intracelular. Si bien no se ha identificado una relación directa entre IFI44 y glioblastomas, algunos estudios sugieren que la expresión de genes interferón-inducibles puede estar implicada en la regulación de la respuesta inmunitaria y la progresión tumoral en algunos tipos de cáncer.")
+    elif selected_dataset == 'GNG11':
+        st.write("GNG11 es un gen que codifica para la proteína subunitaria gamma 11 de la proteína G, la cual tiene un papel en la señalización intracelular y la regulación de la actividad de diversas proteínas. Si bien no se ha identificado una relación directa entre GNG11 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la angiogénesis y la progresión tumoral en otros tipos de cáncer.")
 
     ###############################################
 
@@ -397,4 +395,8 @@ else:
     # Cargar la imagen correspondiente a la opción seleccionada
     image = Image.open(PCA_images[selected_dataset])
     st.image(image, caption='Análisis de Componentes Principales en 3D')
-        
+    
+    # Final
+    if selected_dataset == "8 Genes":
+        st.balloons()
+    
