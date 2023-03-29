@@ -67,109 +67,115 @@ if opt == 'General':
         elif selected_dataset == 'Sin clasificar':
             st.write("Son células que no se han clasificado en ninguna de las categorías o que aún no se han analizado para determinar su identidad celular.")
     
-    st.subheader("Cantidades para la clasificación según el lugar de las celulas")
-    # Contenido de la página principal
-    st.write('Ver la cantidad de células en cada lugar donde se encuentran respecto al tumor del Glioblastoma.')
 
-    # Creamos la estructura de los datos
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Cantidades para la clasificación según el lugar de las celulas")
+        # Contenido de la página principal
+        st.write('Ver la cantidad de células en cada lugar donde se encuentran respecto al tumor del Glioblastoma.')
 
-    cell_type_TC = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
-    cant_cell_TC = [386,94,3,207,4,335]
-    #cell_cant_TC = pd.DataFrame(cant_cell_TC,cell_type_TC)
-    cell_type_TP = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas']
-    cant_cell_TP = [58,1,1,2]
-    cell_type_NP = ['Astrocitos', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
-    cant_cell_NP = [258,510,283,63,13]
+        # Creamos la estructura de los datos
 
-    # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
-    datasets = {'TC': [cell_type_TC, cant_cell_TC], 'TP': [cell_type_TP, cant_cell_TP], 'NP': [cell_type_NP, cant_cell_NP]}
+        cell_type_TC = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
+        cant_cell_TC = [386,94,3,207,4,335]
+        #cell_cant_TC = pd.DataFrame(cant_cell_TC,cell_type_TC)
+        cell_type_TP = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas']
+        cant_cell_TP = [58,1,1,2]
+        cell_type_NP = ['Astrocitos', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
+        cant_cell_NP = [258,510,283,63,13]
 
-    # Creamos un desplegable para que el usuario pueda seleccionar el conjunto de datos a graficar
-    selected_dataset = st.selectbox('Selecciona el lugar de las células para visualizar su distribución:', list(datasets.keys()))
+        # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
+        datasets = {'TC': [cell_type_TC, cant_cell_TC], 'TP': [cell_type_TP, cant_cell_TP], 'NP': [cell_type_NP, cant_cell_NP]}
 
-    # Agregamos CSS personalizado para cambiar el color del recuadro a naranja
-    st.markdown(
-        """
-        <style>
-        div[data-baseweb="select"]>div:first-child {
-            border-color: orange !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+        # Creamos un desplegable para que el usuario pueda seleccionar el conjunto de datos a graficar
+        selected_dataset = st.selectbox('Selecciona el lugar de las células para visualizar su distribución:', list(datasets.keys()))
 
-    # Obtenemos los datos del conjunto seleccionado
-    data = datasets[selected_dataset]
+        # Agregamos CSS personalizado para cambiar el color del recuadro a naranja
+        st.markdown(
+            """
+            <style>
+            div[data-baseweb="select"]>div:first-child {
+                border-color: orange !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
 
-    # Creamos la figura y el eje
-    fig, ax = plt.subplots()
+        # Obtenemos los datos del conjunto seleccionado
+        data = datasets[selected_dataset]
 
-    # Creamos el histograma en el eje
-    colors = ['#FFC04D' if x == 'Astrocitos' else '#ADD8E6' for x in data[0]]
-    ax.bar(data[0], data[1], color=colors)
+        # Creamos la figura y el eje
+        fig, ax = plt.subplots()
 
-    # Agregamos etiquetas al eje x e y y un título
-    ax.set_xlabel('Tipo de célula')
-    ax.set_ylabel('Número de células')
-    ax.set_title(f'Número de células por tipo en {selected_dataset}')
-    
-    # Rotamos los valores del eje X 45 grados
-    ax.set_xticklabels(data[0], rotation=45, ha='right')
+        # Creamos el histograma en el eje
+        colors = ['#FFC04D' if x == 'Astrocitos' else '#ADD8E6' for x in data[0]]
+        ax.bar(data[0], data[1], color=colors)
 
-    # Mostramos la gráfica en la página web
-    st.pyplot(fig)
+        # Agregamos etiquetas al eje x e y y un título
+        ax.set_xlabel('Tipo de célula')
+        ax.set_ylabel('Número de células')
+        ax.set_title(f'Número de células por tipo en {selected_dataset}')
+        
+        # Rotamos los valores del eje X 45 grados
+        ax.set_xticklabels(data[0], rotation=45, ha='right')
 
-    ###########################################################################
+        # Mostramos la gráfica en la página web
+        st.pyplot(fig)
 
-    # Mostramos grafica de Torta de como se distribuyen los datos por tipo de celula
 
-    st.subheader("Cantidades y porcentajes para el tipo de celulas relacionadas")
-    st.write('Este diagrama muestra la distribucion de datos por tipo de celula.')
+    with col2:
 
-    # Creamos la estructura de los datos
+        ###########################################################################
 
-    cant_Astrocytes = {'TC':386,'TP':58,'NP':258}
-    cant_endothelial = {'TC':94,'TP':1}
-    cant_microglia = {'TC':3,'TP':1,'NP':510}
-    cant_neurons = {'TC':207,'TP':2,'NP':283}
-    cant_oligodendrocytes = {'TC':4,'NP':63}
-    cant_unpanned = {'TC':335,'NP':13}
-    
-    # Obtener las claves de las listas como opciones para el selector
-    opciones = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
-    opcion_seleccionada = st.selectbox('Selecciona una lista:', opciones)
-    
-    # Obtener los datos de la lista seleccionada
-    datos = []
-    if opcion_seleccionada == 'Astrocitos':
-        datos = cant_Astrocytes
-    elif opcion_seleccionada == 'Endoteliales':
-        datos = cant_endothelial
-    elif opcion_seleccionada == 'Microglía':
-        datos = cant_microglia
-    elif opcion_seleccionada == 'Neuronas':
-        datos = cant_neurons
-    elif opcion_seleccionada == 'Oligodendrocitos':
-        datos = cant_oligodendrocytes
-    else:
-        datos = cant_unpanned
+        # Mostramos grafica de Torta de como se distribuyen los datos por tipo de celula
+        
+        st.subheader("Cantidades y porcentajes para el tipo de celulas relacionadas")
+        st.write('Este diagrama muestra la distribucion de datos por tipo de celula.')
 
-    # Para mostrar tanto cantidades como porcentajes
-    def pie_chart_label(pct, allvals):
-        absolute = int(pct/100.*np.sum(allvals))
-        return "{:.1f}%\n({:d})".format(pct, absolute)
+        # Creamos la estructura de los datos
 
-    # Crear la gráfica de torta con los datos y los valores absolutos y relativos
-    fig, ax = plt.subplots()
-    wedges, texts, autotexts = ax.pie(datos.values(), labels=datos.keys(), colors=['#0EBFE9',"#FFD97D","#60D394"], autopct=lambda pct: pie_chart_label(pct, list(datos.values())))
-    ax.set_title(f'Distribución por clases para {opcion_seleccionada}')
+        cant_Astrocytes = {'TC':386,'TP':58,'NP':258}
+        cant_endothelial = {'TC':94,'TP':1}
+        cant_microglia = {'TC':3,'TP':1,'NP':510}
+        cant_neurons = {'TC':207,'TP':2,'NP':283}
+        cant_oligodendrocytes = {'TC':4,'NP':63}
+        cant_unpanned = {'TC':335,'NP':13}
+        
+        # Obtener las claves de las listas como opciones para el selector
+        opciones = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
+        opcion_seleccionada = st.selectbox('Selecciona una lista:', opciones)
+        
+        # Obtener los datos de la lista seleccionada
+        datos = []
+        if opcion_seleccionada == 'Astrocitos':
+            datos = cant_Astrocytes
+        elif opcion_seleccionada == 'Endoteliales':
+            datos = cant_endothelial
+        elif opcion_seleccionada == 'Microglía':
+            datos = cant_microglia
+        elif opcion_seleccionada == 'Neuronas':
+            datos = cant_neurons
+        elif opcion_seleccionada == 'Oligodendrocitos':
+            datos = cant_oligodendrocytes
+        else:
+            datos = cant_unpanned
 
-    # Modificar las propiedades del texto en la gráfica de torta
-    #plt.setp(autotexts, size=10, color='gray', weight="bold")
+        # Para mostrar tanto cantidades como porcentajes
+        def pie_chart_label(pct, allvals):
+            absolute = int(pct/100.*np.sum(allvals))
+            return "{:.1f}%\n({:d})".format(pct, absolute)
 
-    # Mostrar la gráfica de torta en la página web
-    st.pyplot(fig)
+        # Crear la gráfica de torta con los datos y los valores absolutos y relativos
+        fig, ax = plt.subplots()
+        wedges, texts, autotexts = ax.pie(datos.values(), labels=datos.keys(), colors=['#0EBFE9',"#FFD97D","#60D394"], autopct=lambda pct: pie_chart_label(pct, list(datos.values())))
+        ax.set_title(f'Distribución por clases para {opcion_seleccionada}')
+
+        # Modificar las propiedades del texto en la gráfica de torta
+        #plt.setp(autotexts, size=10, color='gray', weight="bold")
+
+        # Mostrar la gráfica de torta en la página web
+        st.pyplot(fig)
 
 
 
