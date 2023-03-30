@@ -50,7 +50,8 @@ if opt == 'General':
     st.subheader("General")
     st.image("./images/cerebro.jpg",caption="El cerebro, nuestro procesador en la vida. Imagen de kjpargeter en Freepik")
 
-    text = "El glioblastoma es un tipo de cáncer cerebral muy agresivo y de rápido crecimiento. Este tumor es 1.58 veces más frecuente en hombres y representa el 47.7% de todos los tumores malignos primarios del sistema nervioso central. El tratamiento del glioblastoma generalmente incluye cirugía, radioterapia y quimioterapia. Se caracteriza por una amplia heterogeneidad celular y molecular dentro de los tumores y entre ellos. Por este motivo, es el tipo de cáncer cerebral más común y agresivo, y el diagnóstico y tratamiento de esta enfermedad representan un reto considerable, que conlleva un tiempo medio de supervivencia inferior a dos años desde el diagnóstico. Existen algunos tratamientos basados en cirugía, radioterapia y quimioterapia. Sin embargo, no existe una cura definitiva para esta patología."
+    text = "El glioblastoma es un tipo de cáncer cerebral muy agresivo y de rápido crecimiento. Este tumor es 1.58 veces más frecuente en hombres y representa el 47.7% de todos los tumores malignos primarios del sistema nervioso central. El tratamiento del glioblastoma generalmente incluye cirugía, radioterapia y quimioterapia. Tiene un tiempo medio de supervivencia inferior a dos años desde el diagnóstico"
+    
 
     items = text.split(". ")
     for item in items:
