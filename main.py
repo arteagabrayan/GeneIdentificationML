@@ -226,6 +226,46 @@ else:
         elif selected_dataset == '4: TC vs TP vs NP':
             st.write("Se realiza la clasificación independiente del núcleo del tumor (TC), la periferia del tumor (TP) y la periferia normal (NP)")
 
+    ###########################################################
+    st.subheader("Genes importantes")
+    # Contenido de la página principal
+    st.write('Ver los genes más importantes por escenario y algoritmo de machine learning.')
+
+    model_gen = pd.read_csv('model_data.csv', sep=";")
+
+    # Establecer un selector con las opciones de escenario
+    escenario = st.selectbox("Selecciona un escenario", ("Escenario 1", "Escenario 2", "Escenario 3", "Escenario 4"))
+
+    # Establecer el multiselector basado en la opción seleccionada
+    if escenario == "Escenario 1": 
+        # Muestra un multiselector con las primeras cuatro filas del dataframe
+        ML_models = model_gen.columns[:4]
+        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        # Muestra las columnas completas con la información seleccionada
+        if ML_model_select:
+            st.write(model_gen[ML_model_select])
+    elif escenario == "Escenario 2":
+       # Muestra un multiselector con las primeras cuatro filas del dataframe
+        ML_models = model_gen.columns[4:8]
+        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        # Muestra las columnas completas con la información seleccionada
+        if ML_model_select:
+            st.write(model_gen[ML_model_select])
+    elif escenario == "Escenario 3":
+       # Muestra un multiselector con las primeras cuatro filas del dataframe
+        ML_models = model_gen.columns[8:12]
+        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        # Muestra las columnas completas con la información seleccionada
+        if ML_model_select:
+            st.write(model_gen[ML_model_select])
+    elif escenario == "Escenario 4":
+        # Muestra un multiselector con las primeras cuatro filas del dataframe
+        ML_models = model_gen.columns[12:]
+        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        # Muestra las columnas completas con la información seleccionada
+        if ML_model_select:
+            st.write(model_gen[ML_model_select])        
+
     ###############################################
 
     st.subheader("Análisis de t-SNE")
@@ -249,17 +289,17 @@ else:
     
     ###############################################
 
-    st.subheader("Análisis de PCA en 3D")
+    st.subheader("Análisis de PCA")
     # Contenido de la página principal
     st.write('Ver el análisis de PCA para una cantidad determinada de genes relevantes en el Glioblastoma.')
 
     # Creamos la estructura de los datos
 
     # Creamos una lista con los nombres de los conjuntos de datos y una lista con las cantidades correspondientes
-    PCA_images = {'12 Genes':'./images/pca12gen.png', '8 Genes': './images/pca8gen.png'}
+    PCA_images = {'PCA 2D - 12 Genes':'./images/PCA_12_2D.png', 'PCA 3D - 12 Genes':'./images/PCA_12_3D.png','PCA 2D - 8 Genes':'./images/PCA_8_2D.png', 'PCA 3D - 8 Genes':'./images/PCA_8_3D.png'}
 
     # Creamos un desplegable para que el usuario pueda seleccionar el conjunto de datos a graficar
-    selected_dataset = st.selectbox('Selecciona la cantidad de genes a los cuales desea aplicar una visualizacion en 3D usando PCA:', list(PCA_images.keys()))
+    selected_dataset = st.selectbox('Selecciona la cantidad de genes a los cuales desea aplicar una visualizacion con PCA:', list(PCA_images.keys()))
 
     # Cargar la imagen correspondiente a la opción seleccionada
     image = Image.open(PCA_images[selected_dataset])
@@ -407,8 +447,12 @@ else:
         st.write("GNG11 es un gen que codifica para la proteína subunitaria gamma 11 de la proteína G, la cual tiene un papel en la señalización intracelular y la regulación de la actividad de diversas proteínas. Si bien no se ha identificado una relación directa entre GNG11 y glioblastomas, algunos estudios sugieren que la proteína puede estar implicada en la regulación de la angiogénesis y la progresión tumoral en otros tipos de cáncer.")
     else:
         st.write("No se encontró información para el gen ingresado.")
-    
-    # Final
-    #if selected_dataset == "8 Genes":
-    #    st.balloons()
-        
+
+    centered_button = """
+        <div style='text-align:center;'>
+            <button style='width: 100%;' type='submit'>Gracias</button>
+        </div>
+    """
+
+    if st.button(label=centered_button):
+        st.balloons()
