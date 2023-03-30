@@ -63,14 +63,14 @@ if opt == 'General':
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader("Clasificación según el lugar de las celulas")
+        st.subheader("Clasificación según el lugar de las células")
         st.write("El núcleo del tumor (**TC**, por sus siglas en ingles - Tumor Core) representa a células que forman parte del tejido tumoral del glioblastoma.")
         st.write("La periferia del tumor (**TP**, por sus siglas en inglés - Tumor Periphery) representa a células pertenecientes a la periferia del tumor, limite entre el tejido tumoral y tejido sano del cerebro.")
         st.write("La periferia normal (**NP**, por sus siglas en inglés - Normal Periphery) representa a células sanas que se encuentran alrededor del tumor.")
 
     with col2:
 
-        st.subheader("Tipo de celulas relacionadas")
+        st.subheader("Tipo de células relacionadas")
         cell_type = ['Astrocitos', 'Endoteliales', 'Microglía', 'Neuronas', 'Oligodendrocitos', 'Sin clasificar']
         selected_dataset = st.selectbox('Ver definición de la célula seleccionada:', cell_type)
         
@@ -90,7 +90,7 @@ if opt == 'General':
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader("Cantidades para la clasificación según el lugar de las celulas")
+        st.subheader("Cantidades para la clasificación según el lugar de las células")
         # Contenido de la página principal
         st.write('Ver la cantidad de células en cada lugar donde se encuentran respecto al tumor del Glioblastoma.')
 
@@ -138,7 +138,7 @@ if opt == 'General':
 
         # Mostramos grafica de Torta de como se distribuyen los datos por tipo de celula
 
-        st.subheader("Cantidades y porcentajes para el tipo de celulas relacionadas")
+        st.subheader("Cantidades y porcentajes para el tipo de células relacionadas")
         st.write('Este diagrama muestra la distribucion de datos por tipo de celula.')
 
         # Creamos la estructura de los datos
@@ -240,28 +240,28 @@ else:
     if escenario == "Escenario 1": 
         # Muestra un multiselector con las primeras cuatro filas del dataframe
         ML_models = model_gen.columns[:4]
-        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        ML_model_select = st.multiselect("Seleccione un algoritmo:", ML_models.tolist())
         # Muestra las columnas completas con la información seleccionada
         if ML_model_select:
             st.write(model_gen[ML_model_select])
     elif escenario == "Escenario 2":
        # Muestra un multiselector con las primeras cuatro filas del dataframe
         ML_models = model_gen.columns[4:8]
-        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        ML_model_select = st.multiselect("Seleccione un algoritmo:", ML_models.tolist())
         # Muestra las columnas completas con la información seleccionada
         if ML_model_select:
             st.write(model_gen[ML_model_select])
     elif escenario == "Escenario 3":
        # Muestra un multiselector con las primeras cuatro filas del dataframe
         ML_models = model_gen.columns[8:12]
-        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        ML_model_select = st.multiselect("Seleccione un algoritmo:", ML_models.tolist())
         # Muestra las columnas completas con la información seleccionada
         if ML_model_select:
             st.write(model_gen[ML_model_select])
     elif escenario == "Escenario 4":
         # Muestra un multiselector con las primeras cuatro filas del dataframe
         ML_models = model_gen.columns[12:]
-        ML_model_select = st.multiselect("Seleccione una o varias columnas:", ML_models.tolist())
+        ML_model_select = st.multiselect("Seleccione un algoritmo:", ML_models.tolist())
         # Muestra las columnas completas con la información seleccionada
         if ML_model_select:
             st.write(model_gen[ML_model_select])        
@@ -303,7 +303,7 @@ else:
 
     # Cargar la imagen correspondiente a la opción seleccionada
     image = Image.open(PCA_images[selected_dataset])
-    st.image(image, caption='Análisis de Componentes Principales en 3D')
+    st.image(image, caption='Análisis de Componentes Principales.')
     
     st.subheader("Biomarcadores")
     st.write("Son genes que se han identificado como expresados de manera diferencial en las células tumorales del glioblastoma en comparación con las células no tumorales.")
