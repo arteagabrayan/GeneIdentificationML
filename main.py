@@ -50,6 +50,14 @@ if opt == 'General':
     st.subheader("General")
     st.image("./images/cerebro.jpg",caption="El cerebro, nuestro procesador en la vida. Imagen de kjpargeter en Freepik")
 
+    text = "El glioblastoma es un tipo de cáncer cerebral muy agresivo y de rápido crecimiento. Este tumor es 1.58 veces más frecuente en hombres y representa el 47.7% de todos los tumores malignos primarios del sistema nervioso central. El tratamiento del glioblastoma generalmente incluye cirugía, radioterapia y quimioterapia. Se caracteriza por una amplia heterogeneidad celular y molecular dentro de los tumores y entre ellos. Por este motivo, es el tipo de cáncer cerebral más común y agresivo, y el diagnóstico y tratamiento de esta enfermedad representan un reto considerable, que conlleva un tiempo medio de supervivencia inferior a dos años desde el diagnóstico. Existen algunos tratamientos basados en cirugía, radioterapia y quimioterapia. Sin embargo, no existe una cura definitiva para esta patología."
+
+    items = text.split(". ")
+    for item in items:
+        st.write("- " + item + ".")
+    
+    st.image("./images/Tumorcerebral.jpg",caption="Glioblastoma, tumor cerebral agresivo mapeado en detalle genético y molecular. - ALBERT H. KIM - Archivo")
+    
     st.title('Análisis de datos general')
     st.write('Definición de terminos importantes en esta área de estudio.')
 
@@ -257,12 +265,14 @@ else:
     image = Image.open(PCA_images[selected_dataset])
     st.image(image, caption='Análisis de Componentes Principales en 3D')
     
-    st.subheader("Biomarcador")
+    st.subheader("Biomarcadores")
+    st.write("Son genes que se han identificado como expresados de manera diferencial en las células tumorales del glioblastoma en comparación con las células no tumorales.")
+    
     gen_type = ['ATP1A2', 'NMB', 'SPARCL1', 'USMG5', 'PTN', 'PCSK1N', 'ANAPC11', 'TMSB10', 'TMEM144', 'PSMB4', 'NRBP2', 'FTL',
                 'MIR3682', 'S1PR1', 'PRODH', 'SRP9', 'GAP43', 'RPL30', 'LAMA5', 'ECHDC2', 'EGFR', 'CALM1', 'APOD', 'SPOCK1', 'ANXA1', 'PTGDS', 'EIF1', 'VIM', 'MGLL', 'ITM2C', 'PLLP',
                 'ITGB8', 'HES6', 'RPS27L', 'GFAP', 'TRIM2', 'APOE', 'ANXA5', 'NAV1', 'TMSB4X', 'HSPB1', 'SEC61G', 'IGSF6', 'IGFBP2', 'RPLP1', 'CSF1R', 'NACA', 'HTRA1', 'CSF3R', 'CREG1', 'FAM107B', 'SLAMF9',
                 'GLDN', 'EMP3', 'COMMD6', 'ANXA2', 'RPL38', 'CEBPD', 'APBB1IP', 'HLADRB6', 'TUBGCP2', 'LCP2', 'LOC100505854', 'IFI44', 'GNG11']
-    st.write("Un biomarcador es una medida objetiva de una característica biológica que puede ser utilizada para indicar la presencia, gravedad o progresión de una enfermedad, así como para evaluar la eficacia de un tratamiento.")
+
     selected_dataset = st.selectbox('Seleccionar un gen:', gen_type)
     
     if selected_dataset == 'ATP1A2':
