@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from PIL import Image
 
-st.set_page_config(page_title="Industrias 4.0", page_icon=":guardsman:", layout="centered")#layout="wide")#layout="centered")
+st.set_page_config(page_title="Industrias 4.0", page_icon="./images/logo.png", layout="centered") #layout="wide")#layout="centered")
 
 # Ocultar header y footer que vienen por defecto
 st.markdown("""
