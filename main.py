@@ -213,7 +213,7 @@ else:
             st.write("ET (Extra Trees) es un algoritmo de aprendizaje supervisado utilizado para problemas de clasificación y regresión. Es similar a Random Forest (RF) en que construye múltiples árboles de decisión, pero se diferencia en cómo se construyen y combinan los árboles. En ET, cada árbol se construye utilizando un subconjunto aleatorio de las características del conjunto de datos. A diferencia de RF, donde se realiza una selección de características aleatorias y se evalúa la mejor división, en ET se selecciona una división aleatoria en cada nodo. Esto significa que los árboles individuales en ET son más aleatorios y, por lo tanto, más diversos.")
             
     with col2:
-        st.subheader("Esenario")
+        st.subheader("Escenario")
         escenario = ['1: TP vs TC', '2: TP vs NP', '3: NP vs TPC', '4: TC vs TP vs NP']
         st.write("Los escenarios se utilizaron para entrenar los modelos y asi definir cuales serian los biomarcadores mas representativos apra el glioblastoma.")
         selected_dataset = st.selectbox('Seleccionar un escenario:', escenario)
