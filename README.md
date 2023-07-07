@@ -2,7 +2,7 @@
 
 ## Acceder a la aplicación web
 
-[FlowPredML](https://geneidentificationml.streamlit.app/)
+[GeneIdentificationML](https://geneidentificationml.streamlit.app/)
 
 ## Paper soporte científico
 
