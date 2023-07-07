@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from PIL import Image
 
-st.set_page_config(page_title="Brain Study", page_icon="./images/logo.png", layout="centered") #layout="wide")#layout="centered")
+st.set_page_config(page_title="GeneIdentificationML", page_icon="./images/logo.png", layout="centered") #layout="wide")#layout="centered")
 
 # Ocultar header y footer que vienen por defecto
 st.markdown("""
@@ -124,6 +124,7 @@ if opt == 'General':
         ax.set_title(f'Número de células por tipo en {selected_dataset}')
         
         # Rotamos los valores del eje X 45 grados
+        ax.set_xticks(range(len(data[0])))
         ax.set_xticklabels(data[0], rotation=45, ha='right')
 
         # Mostramos la gráfica en la página web
@@ -186,7 +187,7 @@ if opt == 'General':
 # Sección de análisis de células astrocitarias
 else:
     st.subheader("Astrocitos")
-    st.image("./images/DNAblue.png",caption="El cerebro, nuestro procesador en la vida. ")
+    st.image("./images/DNAblue.jpg",caption="El cerebro, nuestro procesador en la vida. ")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -320,11 +321,7 @@ else:
         st.write(dict_genes_sorted[selected_gen])
     else: st.write("No se encontró información para el gen ingresado.")
 
-    centered_button = """
-        <div style='text-align:center;'>
-            <button style='width: 100%;' type='submit'>Gracias</button>
-        </div>
-    """
+    centered_button = st.button('Gracias por su atención')
 
-    if st.button(label=centered_button):
+    if centered_button:
         st.balloons()
